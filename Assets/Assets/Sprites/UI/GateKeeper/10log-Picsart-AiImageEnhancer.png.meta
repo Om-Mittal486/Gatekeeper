@@ -1,0 +1,574 @@
+fileFormatVersion: 2
+guid: 8d397201244d06e499380c6de1d57a41
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5385638884712737861
+    second: 10log-Picsart-AiImageEnhancer_0
+  - first:
+      213: -3632760164372005748
+    second: 10log-Picsart-AiImageEnhancer_1
+  - first:
+      213: 4847646648268314681
+    second: 10log-Picsart-AiImageEnhancer_2
+  - first:
+      213: 6537462438301360643
+    second: 10log-Picsart-AiImageEnhancer_3
+  - first:
+      213: -4520826834600919432
+    second: 10log-Picsart-AiImageEnhancer_4
+  - first:
+      213: -5150593695861448884
+    second: 10log-Picsart-AiImageEnhancer_5
+  - first:
+      213: 4597238254915866275
+    second: 10log-Picsart-AiImageEnhancer_6
+  - first:
+      213: 6252872537476862845
+    second: 10log-Picsart-AiImageEnhancer_7
+  - first:
+      213: 7203636879249089198
+    second: 10log-Picsart-AiImageEnhancer_8
+  - first:
+      213: 6583581951123298524
+    second: 10log-Picsart-AiImageEnhancer_9
+  - first:
+      213: -4831522408592028878
+    second: 10log-Picsart-AiImageEnhancer_10
+  - first:
+      213: -5861901214654199159
+    second: 10log-Picsart-AiImageEnhancer_11
+  - first:
+      213: -2835243653065863239
+    second: 10log-Picsart-AiImageEnhancer_12
+  - first:
+      213: 8621716030560205504
+    second: 10log-Picsart-AiImageEnhancer_13
+  - first:
+      213: 4064994384577917345
+    second: 10log-Picsart-AiImageEnhancer_14
+  - first:
+      213: -7714895787058034637
+    second: 10log-Picsart-AiImageEnhancer_15
+  - first:
+      213: 4807300293714492533
+    second: 10log-Picsart-AiImageEnhancer_16
+  - first:
+      213: 8113565857080589440
+    second: 10log-Picsart-AiImageEnhancer_17
+  - first:
+      213: -9134925393527287052
+    second: 10log-Picsart-AiImageEnhancer_18
+  - first:
+      213: -8252564751989862959
+    second: 10log-Picsart-AiImageEnhancer_19
+  - first:
+      213: 8507434428121487491
+    second: 10log-Picsart-AiImageEnhancer_20
+  - first:
+      213: -688016609764031042
+    second: 10log-Picsart-AiImageEnhancer_21
+  - first:
+      213: 9197182998682609486
+    second: 10log-Picsart-AiImageEnhancer_22
+  - first:
+      213: -8078029704582712710
+    second: 10log-Picsart-AiImageEnhancer_23
+  - first:
+      213: -6068864759596199017
+    second: 10log-Picsart-AiImageEnhancer_24
+  - first:
+      213: 7860794903835389594
+    second: 10log-Picsart-AiImageEnhancer_25
+  - first:
+      213: -8660300976843437126
+    second: 10log-Picsart-AiImageEnhancer_26
+  - first:
+      213: -5980420641181439524
+    second: 10log-Picsart-AiImageEnhancer_27
+  - first:
+      213: -2995511010793269787
+    second: 10log-Picsart-AiImageEnhancer_28
+  - first:
+      213: 2517691205915358529
+    second: 10log-Picsart-AiImageEnhancer_29
+  - first:
+      213: -3345403900401623284
+    second: 10log-Picsart-AiImageEnhancer_30
+  - first:
+      213: 1500853893446742906
+    second: 10log-Picsart-AiImageEnhancer_31
+  - first:
+      213: 6150437741647591442
+    second: 10log-Picsart-AiImageEnhancer_32
+  - first:
+      213: -7529159083180408459
+    second: 10log-Picsart-AiImageEnhancer_33
+  - first:
+      213: 7177781859092242233
+    second: 10log-Picsart-AiImageEnhancer_34
+  - first:
+      213: -593024025083672331
+    second: 10log-Picsart-AiImageEnhancer_35
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: 10log-Picsart-AiImageEnhancer_23
+      rect:
+        serializedVersion: 2
+        x: 3717
+        y: 773
+        width: 379
+        height: 1135
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a723b4d68c215ef80800000000000000
+      internalID: -8078029704582712710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10log-Picsart-AiImageEnhancer_24
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 734
+        width: 493
+        height: 1212
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 793d166c7af07cba0800000000000000
+      internalID: -6068864759596199017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10log-Picsart-AiImageEnhancer_25
+      rect:
+        serializedVersion: 2
+        x: 1014
+        y: 740
+        width: 487
+        height: 1212
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9e2f471157271d60800000000000000
+      internalID: 7860794903835389594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10log-Picsart-AiImageEnhancer_27
+      rect:
+        serializedVersion: 2
+        x: 1498
+        y: 773
+        width: 375
+        height: 789
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd967facc17410da0800000000000000
+      internalID: -5980420641181439524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10log-Picsart-AiImageEnhancer_28
+      rect:
+        serializedVersion: 2
+        x: 1863
+        y: 773
+        width: 482
+        height: 1226
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e555e84b9ecd66d0800000000000000
+      internalID: -2995511010793269787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10log-Picsart-AiImageEnhancer_29
+      rect:
+        serializedVersion: 2
+        x: 2358
+        y: 773
+        width: 409
+        height: 1146
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 145b5beffc2a0f220800000000000000
+      internalID: 2517691205915358529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10log-Picsart-AiImageEnhancer_30
+      rect:
+        serializedVersion: 2
+        x: 2827
+        y: 773
+        width: 355
+        height: 895
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0fda5690ecb291d0800000000000000
+      internalID: -3345403900401623284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10log-Picsart-AiImageEnhancer_31
+      rect:
+        serializedVersion: 2
+        x: 3231
+        y: 773
+        width: 470
+        height: 1132
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a73b7aa0aaa14d410800000000000000
+      internalID: 1500853893446742906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10log-Picsart-AiImageEnhancer_32
+      rect:
+        serializedVersion: 2
+        x: 1025
+        y: 14
+        width: 315
+        height: 695
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2187f042a8eba5550800000000000000
+      internalID: 6150437741647591442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10log-Picsart-AiImageEnhancer_33
+      rect:
+        serializedVersion: 2
+        x: 1525
+        y: 14
+        width: 311
+        height: 683
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57140ad74bd038790800000000000000
+      internalID: -7529159083180408459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10log-Picsart-AiImageEnhancer_34
+      rect:
+        serializedVersion: 2
+        x: 1969
+        y: 14
+        width: 362
+        height: 708
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93f9f62429a9c9360800000000000000
+      internalID: 7177781859092242233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10log-Picsart-AiImageEnhancer_35
+      rect:
+        serializedVersion: 2
+        x: 2783
+        y: 14
+        width: 469
+        height: 720
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f88d998ac725c7f0800000000000000
+      internalID: -593024025083672331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10log-Picsart-AiImageEnhancer_36
+      rect:
+        serializedVersion: 2
+        x: 558
+        y: 737
+        width: 456
+        height: 1212
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5a1301aeb13b84469bc2110c91a3552
+      internalID: -2074737291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: c0a00c228fc075244a4645aff327c82f
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      10log-Picsart-AiImageEnhancer_0: 5385638884712737861
+      10log-Picsart-AiImageEnhancer_1: -3632760164372005748
+      10log-Picsart-AiImageEnhancer_10: -4831522408592028878
+      10log-Picsart-AiImageEnhancer_11: -5861901214654199159
+      10log-Picsart-AiImageEnhancer_12: -2835243653065863239
+      10log-Picsart-AiImageEnhancer_13: 8621716030560205504
+      10log-Picsart-AiImageEnhancer_14: 4064994384577917345
+      10log-Picsart-AiImageEnhancer_15: -7714895787058034637
+      10log-Picsart-AiImageEnhancer_16: 4807300293714492533
+      10log-Picsart-AiImageEnhancer_17: 8113565857080589440
+      10log-Picsart-AiImageEnhancer_18: -9134925393527287052
+      10log-Picsart-AiImageEnhancer_19: -8252564751989862959
+      10log-Picsart-AiImageEnhancer_2: 4847646648268314681
+      10log-Picsart-AiImageEnhancer_20: 8507434428121487491
+      10log-Picsart-AiImageEnhancer_21: -688016609764031042
+      10log-Picsart-AiImageEnhancer_22: 9197182998682609486
+      10log-Picsart-AiImageEnhancer_23: -8078029704582712710
+      10log-Picsart-AiImageEnhancer_24: -6068864759596199017
+      10log-Picsart-AiImageEnhancer_25: 7860794903835389594
+      10log-Picsart-AiImageEnhancer_26: -8660300976843437126
+      10log-Picsart-AiImageEnhancer_27: -5980420641181439524
+      10log-Picsart-AiImageEnhancer_28: -2995511010793269787
+      10log-Picsart-AiImageEnhancer_29: 2517691205915358529
+      10log-Picsart-AiImageEnhancer_3: 6537462438301360643
+      10log-Picsart-AiImageEnhancer_30: -3345403900401623284
+      10log-Picsart-AiImageEnhancer_31: 1500853893446742906
+      10log-Picsart-AiImageEnhancer_32: 6150437741647591442
+      10log-Picsart-AiImageEnhancer_33: -7529159083180408459
+      10log-Picsart-AiImageEnhancer_34: 7177781859092242233
+      10log-Picsart-AiImageEnhancer_35: -593024025083672331
+      10log-Picsart-AiImageEnhancer_36: -2074737291
+      10log-Picsart-AiImageEnhancer_4: -4520826834600919432
+      10log-Picsart-AiImageEnhancer_5: -5150593695861448884
+      10log-Picsart-AiImageEnhancer_6: 4597238254915866275
+      10log-Picsart-AiImageEnhancer_7: 6252872537476862845
+      10log-Picsart-AiImageEnhancer_8: 7203636879249089198
+      10log-Picsart-AiImageEnhancer_9: 6583581951123298524
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
