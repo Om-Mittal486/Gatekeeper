@@ -9662,7 +9662,8 @@ MonoBehaviour:
   minSpeed: 2
   maxSpeed: 15
   animator: {fileID: 1569957054}
-  speedParameter: Speed
+  speedFloat: Speed
+  choiceManager: {fileID: 2073423341}
 --- !u!95 &1569957054
 Animator:
   serializedVersion: 7
@@ -12762,6 +12763,7 @@ MonoBehaviour:
   triggerCheck: {fileID: 1076865657}
   audioSource: {fileID: 2025631466}
   shootClip: {fileID: 8300000, guid: f47e4a5e894724548a71c0952888f4f3, type: 3}
+  killedScreen: {fileID: 1086226476}
   visitors:
   - visitorName: Arun
     visitorType: Normal
@@ -12963,7 +12965,6 @@ MonoBehaviour:
       reply2: Strike first then.
       reply3: I enjoy games.
     correctChoice: 3
-  killedScreen: {fileID: 1086226476}
   correctCount: 0
   wrongCount: 0
 --- !u!1 &2083306992

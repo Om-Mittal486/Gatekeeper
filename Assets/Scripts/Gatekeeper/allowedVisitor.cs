@@ -6,17 +6,20 @@ public class AutoMoveSprite : MonoBehaviour
     [SerializeField] private Vector2 startPosition;
     [SerializeField] private Vector2 targetPosition;
 
-    [Header("Random Speed Range")]
+    [Header("Speed")]
     [SerializeField] private float minSpeed = 2f;
-    [SerializeField] private float maxSpeed = 6f;
+    [SerializeField] private float maxSpeed = 5f;
 
     [Header("Animation")]
     [SerializeField] private Animator animator;
-    [SerializeField] private string speedParameter = "Speed";
+    [SerializeField] private string speedFloat = "Speed";
+
+    [Header("Choice Manager")]
+    [SerializeField] private ChoiceManager choiceManager;
 
     private float moveSpeed;
     private bool isMoving = false;
-    private static bool firstTime = true;
+    private bool firstMove = true;
 
     public bool MovementFinished => !isMoving;
 
@@ -35,11 +38,7 @@ public class AutoMoveSprite : MonoBehaviour
             moveSpeed * Time.deltaTime
         );
 
-        if (animator != null)
-            animator.SetFloat(speedParameter, moveSpeed);
-
-        // Reached target
-        if (Vector2.Distance(transform.position, targetPosition) < 0.01f)
+        if (Vector2.Distance(transform.position, targetPosition) <= 0.01f)
         {
             FinishMovement();
         }
@@ -47,14 +46,12 @@ public class AutoMoveSprite : MonoBehaviour
 
     public void StartMovement()
     {
-        if (isMoving) return;
-
         transform.position = startPosition;
 
-        if (firstTime)
+        if (firstMove)
         {
             moveSpeed = minSpeed;
-            firstTime = false;
+            firstMove = false;
         }
         else
         {
@@ -64,7 +61,7 @@ public class AutoMoveSprite : MonoBehaviour
         isMoving = true;
 
         if (animator != null)
-            animator.SetFloat(speedParameter, moveSpeed);
+            animator.SetFloat(speedFloat, moveSpeed);
     }
 
     public void StopMovement()
@@ -72,7 +69,7 @@ public class AutoMoveSprite : MonoBehaviour
         isMoving = false;
 
         if (animator != null)
-            animator.SetFloat(speedParameter, 0f);
+            animator.SetFloat(speedFloat, 0f);
     }
 
     void FinishMovement()
@@ -80,11 +77,16 @@ public class AutoMoveSprite : MonoBehaviour
         isMoving = false;
 
         if (animator != null)
-            animator.SetFloat(speedParameter, 0f);
+            animator.SetFloat(speedFloat, 0f);
 
         transform.position = startPosition;
-
         gameObject.SetActive(false);
+
+        // IMPORTANT FIX:
+        // If player missed Wait & Shoot and visitor escaped,
+        // notify ChoiceManager to continue game.
+        if (choiceManager != null)
+            choiceManager.OnWalkingVisitorFinished();
     }
 
     private void OnDisable()
@@ -92,7 +94,7 @@ public class AutoMoveSprite : MonoBehaviour
         isMoving = false;
 
         if (animator != null)
-            animator.SetFloat(speedParameter, 0f);
+            animator.SetFloat(speedFloat, 0f);
 
         transform.position = startPosition;
     }

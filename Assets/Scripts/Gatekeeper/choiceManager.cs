@@ -26,7 +26,7 @@ public class ChoiceManager : MonoBehaviour
     public class Visitor
     {
         public string visitorName;
-        public string visitorType; // Normal / Alien / Cannibal
+        public string visitorType;
         public Sprite visitorSprite;
         public ReplySet[] replies;
 
@@ -68,11 +68,11 @@ public class ChoiceManager : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip shootClip;
 
-    [Header("Visitors")]
-    public Visitor[] visitors;
-
     [Header("Death Screen")]
     public GameObject killedScreen;
+
+    [Header("Visitors")]
+    public Visitor[] visitors;
 
     [Header("Score")]
     public int correctCount = 0;
@@ -221,15 +221,12 @@ public class ChoiceManager : MonoBehaviour
 
         RegisterVerdict(choice);
 
-        // ALLOW ENTRY
         if (choice == 1)
         {
             yield return StartCoroutine(StartWalkRoutine(false));
         }
-        // SHOOT IMMEDIATELY
         else if (choice == 2)
         {
-            // If Alien killed instantly -> player dies
             if (currentVisitor.visitorType.ToLower() == "alien")
             {
                 ShowKilledScreen();
@@ -237,43 +234,16 @@ public class ChoiceManager : MonoBehaviour
             }
 
             PlayShootSound();
-
             visitorObject.SetActive(false);
 
             yield return new WaitForSeconds(0.3f);
 
             LoadNewVisitor();
         }
-        // WAIT AND SHOOT
         else if (choice == 3)
         {
             yield return StartCoroutine(StartWalkRoutine(true));
         }
-    }
-
-    void ShowKilledScreen()
-    {
-        gameOver = true;
-
-        visitorObject.SetActive(false);
-
-        if (autoMoveSprite != null)
-            autoMoveSprite.gameObject.SetActive(false);
-
-        SetButtons(false);
-
-        if (killedScreen != null)
-            killedScreen.SetActive(true);
-
-        Debug.Log("KILLED BY ALIEN");
-    }
-
-    void RegisterVerdict(int selectedChoice)
-    {
-        if (selectedChoice == currentVisitor.correctChoice)
-            correctCount++;
-        else
-            wrongCount++;
     }
 
     IEnumerator StartWalkRoutine(bool enableWaitShoot)
@@ -328,6 +298,40 @@ public class ChoiceManager : MonoBehaviour
         autoMoveSprite.gameObject.SetActive(false);
 
         LoadNewVisitor();
+    }
+
+    // IMPORTANT FIX METHOD
+    public void OnWalkingVisitorFinished()
+    {
+        if (gameOver) return;
+
+        waitShootMode = false;
+        isBusy = false;
+
+        LoadNewVisitor();
+    }
+
+    void ShowKilledScreen()
+    {
+        gameOver = true;
+
+        visitorObject.SetActive(false);
+
+        if (autoMoveSprite != null)
+            autoMoveSprite.gameObject.SetActive(false);
+
+        SetButtons(false);
+
+        if (killedScreen != null)
+            killedScreen.SetActive(true);
+    }
+
+    void RegisterVerdict(int selectedChoice)
+    {
+        if (selectedChoice == currentVisitor.correctChoice)
+            correctCount++;
+        else
+            wrongCount++;
     }
 
     void ShowShootButtonOnly()
