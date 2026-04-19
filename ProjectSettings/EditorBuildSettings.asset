@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 01de5f2ca4aea9046a0e19ea1da68870
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/IntroCutscene.unity
     guid: 23defeb0ff74736499264edec38dda67
   - enabled: 1
@@ -59,7 +59,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Ending.unity
     guid: 5694f412ecb10db47894b43c9cc51e9f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/EndCredits.unity
     guid: 6cd8bf8cee407584eb26e06a6815bc21
   m_configObjects:

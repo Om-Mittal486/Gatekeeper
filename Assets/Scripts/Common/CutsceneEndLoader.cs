@@ -50,6 +50,7 @@ public class CutsceneEndLoader : MonoBehaviour
 
     void OnVideoEnd(VideoPlayer vp)
     {
+        UnLockCursor();
         SceneManager.LoadScene(sceneIndexToLoad);
     }
 
@@ -57,5 +58,10 @@ public class CutsceneEndLoader : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+    void UnLockCursor()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }
