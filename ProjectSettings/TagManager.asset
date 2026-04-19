@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Music
+  - Visitor
   layers:
   - Default
   - TransparentFX

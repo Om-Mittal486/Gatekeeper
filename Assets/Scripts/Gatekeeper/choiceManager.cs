@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -26,12 +27,15 @@ public class ChoiceManager : MonoBehaviour
     {
         public string visitorName;
         public string visitorType;
+        public Sprite visitorSprite;
+        public ReplySet[] replies;
 
-        public Sprite visitorSprite;     // Sprite for this visitor
-        public ReplySet[] replies;       // 5 stages
+        [Header("Correct Final Choice")]
+        [Range(1, 3)]
+        public int correctChoice = 1;
     }
 
-    [Header("Universal Questions")]
+    [Header("Questions")]
     public QuestionSet[] questionSets;
 
     [Header("Buttons")]
@@ -45,139 +49,314 @@ public class ChoiceManager : MonoBehaviour
 
     [Header("Chat")]
     public Transform content;
-    public GameObject messagePrefab;
     public ScrollRect scrollRect;
 
-    [Header("Visitor Visual")]
-    public GameObject visitorObject;      // Hierarchy object to enable/disable
-    public Image visitorImage;            // UI Image component
+    public GameObject systemMessagePrefab;
+    public GameObject playerMessagePrefab;
+    public GameObject npcMessagePrefab;
+
+    [Header("Checkpoint Visitor")]
+    public GameObject visitorObject;
+    public SpriteRenderer visitorRenderer;
+
+    [Header("Walking Visitor")]
+    public AutoMoveSprite autoMoveSprite;
+
+    [Header("Trigger Zone")]
+    public TriggerCheck triggerCheck;
+
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip shootClip;
 
     [Header("Visitors")]
     public Visitor[] visitors;
 
+    [Header("Score")]
+    public int correctCount = 0;
+    public int wrongCount = 0;
+
     private Visitor currentVisitor;
     private int currentIndex = 0;
+
+    private bool isBusy = false;
+    private bool waitShootMode = false;
+
+    private List<int> visitedVisitors = new List<int>();
 
     void Start()
     {
         button1.onClick.AddListener(() => SelectChoice(1));
-        button2.onClick.AddListener(() => SelectChoice(2));
+        button2.onClick.AddListener(Button2Pressed);
         button3.onClick.AddListener(() => SelectChoice(3));
 
         visitorObject.SetActive(false);
 
+        if (autoMoveSprite != null)
+            autoMoveSprite.gameObject.SetActive(false);
+
         LoadNewVisitor();
+    }
+
+    void Button2Pressed()
+    {
+        if (waitShootMode)
+            ShootMovingVisitor();
+        else
+            SelectChoice(2);
     }
 
     void LoadNewVisitor()
     {
+        if (visitedVisitors.Count >= visitors.Length)
+        {
+            Debug.Log("ALL VISITORS COMPLETED");
+            visitorObject.SetActive(false);
+            return;
+        }
+
         ClearChat();
 
-        currentVisitor = visitors[Random.Range(0, visitors.Length)];
+        int randomIndex = GetUnvisitedVisitor();
+
+        currentVisitor = visitors[randomIndex];
+        visitedVisitors.Add(randomIndex);
+
         currentIndex = 0;
+        waitShootMode = false;
+        isBusy = false;
 
-        // Activate hierarchy object and set sprite
         visitorObject.SetActive(true);
-        visitorImage.sprite = currentVisitor.visitorSprite;
+        visitorRenderer.sprite = currentVisitor.visitorSprite;
 
-        CreateMessage(currentVisitor.visitorName + " approaches checkpoint.", false);
+        RestoreNormalButtons();
+
+        CreateSystemMessage(currentVisitor.visitorName.ToUpper() + " APPROACHES");
 
         UpdateChoices();
+        SetButtons(true);
+
+        Debug.Log("CURRENT VISITOR: " + currentVisitor.visitorName +
+                  " | CorrectChoice = " + currentVisitor.correctChoice);
+    }
+
+    int GetUnvisitedVisitor()
+    {
+        List<int> available = new List<int>();
+
+        for (int i = 0; i < visitors.Length; i++)
+        {
+            if (!visitedVisitors.Contains(i))
+                available.Add(i);
+        }
+
+        return available[Random.Range(0, available.Count)];
     }
 
     void UpdateChoices()
     {
-        if (currentIndex >= questionSets.Length)
-            return;
+        if (currentIndex >= questionSets.Length) return;
 
         button1Text.text = questionSets[currentIndex].button1;
         button2Text.text = questionSets[currentIndex].button2;
         button3Text.text = questionSets[currentIndex].button3;
     }
 
-    void SelectChoice(int choiceNumber)
+    public void SelectChoice(int choice)
     {
-        StartCoroutine(ChatFlow(choiceNumber));
+        if (isBusy || waitShootMode) return;
+
+        StartCoroutine(ChatFlow(choice));
     }
 
-    IEnumerator ChatFlow(int choiceNumber)
+    IEnumerator ChatFlow(int choice)
     {
+        isBusy = true;
         SetButtons(false);
 
-        ReplySet currentReply = currentVisitor.replies[currentIndex];
-        QuestionSet currentQuestion = questionSets[currentIndex];
+        ReplySet reply = currentVisitor.replies[currentIndex];
 
-        string playerChoice = "";
+        string playerText = "";
         string npcReply = "";
 
-        if (choiceNumber == 1)
+        if (choice == 1)
         {
-            playerChoice = currentQuestion.button1;
-            npcReply = currentReply.reply1;
+            playerText = questionSets[currentIndex].button1;
+            npcReply = reply.reply1;
         }
-        else if (choiceNumber == 2)
+        else if (choice == 2)
         {
-            playerChoice = currentQuestion.button2;
-            npcReply = currentReply.reply2;
-        }
-        else
-        {
-            playerChoice = currentQuestion.button3;
-            npcReply = currentReply.reply3;
-        }
-
-        bool isFinalStage = currentIndex == questionSets.Length - 1;
-
-        // Final stage Wait and Shoot fake text
-        if (isFinalStage && choiceNumber == 3)
-        {
-            CreateMessage("Allow Entry!", true);
-
-            Debug.Log("Start Wait And Shoot Minigame");
+            playerText = questionSets[currentIndex].button2;
+            npcReply = reply.reply2;
         }
         else
         {
-            CreateMessage(playerChoice, true);
+            playerText = questionSets[currentIndex].button3;
+            npcReply = reply.reply3;
         }
 
-        yield return new WaitForSeconds(1f);
+        bool finalStage = currentIndex == questionSets.Length - 1;
 
-        CreateMessage(npcReply, false);
+        if (finalStage && choice == 3)
+            CreatePlayerMessage("ALLOW ENTRY!");
+        else
+            CreatePlayerMessage(playerText);
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.8f);
 
-        currentIndex++;
+        CreateNPCMessage(npcReply);
 
-        // If conversation finished
-        if (currentIndex >= questionSets.Length)
+        yield return new WaitForSeconds(0.4f);
+
+        if (!finalStage)
         {
-            // Deactivate hierarchy object
+            currentIndex++;
+            UpdateChoices();
+            SetButtons(true);
+            isBusy = false;
+            yield break;
+        }
+
+        // FINAL VERDICT
+        RegisterVerdict(choice);
+
+        if (choice == 1)
+        {
+            yield return StartCoroutine(StartWalkRoutine(false));
+        }
+        else if (choice == 2)
+        {
+            PlayShootSound();
             visitorObject.SetActive(false);
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.3f);
 
             LoadNewVisitor();
         }
-        else
+        else if (choice == 3)
         {
-            UpdateChoices();
+            yield return StartCoroutine(StartWalkRoutine(true));
         }
-
-        SetButtons(true);
     }
 
-    void CreateMessage(string msg, bool isPlayer)
+    void RegisterVerdict(int selectedChoice)
     {
-        GameObject newMsg = Instantiate(messagePrefab, content);
-        TMP_Text txt = newMsg.GetComponent<TMP_Text>();
+        Debug.Log("VISITOR: " + currentVisitor.visitorName);
+        Debug.Log("SELECTED: " + selectedChoice);
+        Debug.Log("EXPECTED: " + currentVisitor.correctChoice);
 
-        txt.text = msg;
-
-        if (isPlayer)
-            txt.alignment = TextAlignmentOptions.Right;
+        if (selectedChoice == currentVisitor.correctChoice)
+        {
+            correctCount++;
+            Debug.Log("CORRECT | Total = " + correctCount);
+        }
         else
-            txt.alignment = TextAlignmentOptions.Left;
+        {
+            wrongCount++;
+            Debug.Log("WRONG | Total = " + wrongCount);
+        }
+    }
 
+    IEnumerator StartWalkRoutine(bool enableWaitShoot)
+    {
+        visitorObject.SetActive(false);
+
+        autoMoveSprite.gameObject.SetActive(true);
+
+        SpriteRenderer moveSprite = autoMoveSprite.GetComponent<SpriteRenderer>();
+
+        if (moveSprite != null)
+            moveSprite.sprite = currentVisitor.visitorSprite;
+
+        autoMoveSprite.StartMovement();
+
+        if (enableWaitShoot)
+        {
+            waitShootMode = true;
+            ShowShootButtonOnly();
+            isBusy = false;
+            yield break;
+        }
+
+        yield return new WaitUntil(() => autoMoveSprite.MovementFinished);
+
+        LoadNewVisitor();
+    }
+
+    public void ShootMovingVisitor()
+    {
+        if (!waitShootMode) return;
+
+        if (triggerCheck != null && triggerCheck.CanShoot())
+        {
+            StartCoroutine(SuccessfulShootRoutine());
+        }
+    }
+
+    IEnumerator SuccessfulShootRoutine()
+    {
+        RegisterVerdict(3);
+
+        isBusy = true;
+        waitShootMode = false;
+
+        autoMoveSprite.StopMovement();
+
+        PlayShootSound();
+
+        yield return new WaitForSeconds(0.2f);
+
+        autoMoveSprite.gameObject.SetActive(false);
+
+        LoadNewVisitor();
+    }
+
+    void ShowShootButtonOnly()
+    {
+        button1.gameObject.SetActive(false);
+        button3.gameObject.SetActive(false);
+
+        button2.gameObject.SetActive(true);
+        button2.interactable = true;
+        button2Text.text = "SHOOT";
+    }
+
+    void RestoreNormalButtons()
+    {
+        button1.gameObject.SetActive(true);
+        button2.gameObject.SetActive(true);
+        button3.gameObject.SetActive(true);
+    }
+
+    void PlayShootSound()
+    {
+        if (audioSource != null && shootClip != null)
+            audioSource.PlayOneShot(shootClip);
+    }
+
+    void CreateSystemMessage(string msg)
+    {
+        GameObject obj = Instantiate(systemMessagePrefab, content);
+        obj.GetComponentInChildren<TMP_Text>().text = msg;
+        ScrollBottom();
+    }
+
+    void CreatePlayerMessage(string msg)
+    {
+        GameObject obj = Instantiate(playerMessagePrefab, content);
+        obj.GetComponentInChildren<TMP_Text>().text = msg;
+        ScrollBottom();
+    }
+
+    void CreateNPCMessage(string msg)
+    {
+        GameObject obj = Instantiate(npcMessagePrefab, content);
+        obj.GetComponentInChildren<TMP_Text>().text = msg;
+        ScrollBottom();
+    }
+
+    void ScrollBottom()
+    {
         Canvas.ForceUpdateCanvases();
         scrollRect.verticalNormalizedPosition = 0f;
     }
@@ -192,8 +371,6 @@ public class ChoiceManager : MonoBehaviour
     void ClearChat()
     {
         foreach (Transform child in content)
-        {
             Destroy(child.gameObject);
-        }
     }
 }
