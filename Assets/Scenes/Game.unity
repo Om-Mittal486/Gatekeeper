@@ -9182,6 +9182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AudioVolumeController
   masterSlider: {fileID: 97140788}
   musicSlider: {fileID: 1591190643}
+  musicSources: []
 --- !u!82 &1511616740
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10388,6 +10389,8 @@ MonoBehaviour:
   isDialogueActive: 0
   typingSpeed: 0.1
   animator: {fileID: 1610927787}
+  isTyping: 0
+  currentSentence: 
 --- !u!114 &1610927789
 MonoBehaviour:
   m_ObjectHideFlags: 0
